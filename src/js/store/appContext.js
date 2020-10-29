@@ -13,7 +13,9 @@ const injectContext = PassedComponent => {
 			getState({
 				getStore: () => state.store,
 				getActions: () => state.actions,
-				setStore: updatedStore =>
+				setStore: (
+					updatedStore //Parte que modifica el store
+				) =>
 					setState({
 						store: Object.assign(state.store, updatedStore),
 						actions: { ...state.actions }
@@ -22,6 +24,11 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
+			state.actions.getCharacters();
+			console.log(state.store.characters, "en context");
+			console.log(state.store.demo, "en context");
+
+			//Aqui empezamos, haciendo el fetch
 			/**
 			 * EDIT THIS!
 			 * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime
