@@ -2,19 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			//--------------------------------Aqui se guarda informacion
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
-			characters: []
+			planets: [],
+			peoples: []
 		},
 		actions: {
 			getPlanets: () => {
@@ -25,13 +14,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						if (!response.ok) {
 							throw Error("I can't load characters");
 						}
-
 						return response.json();
 					})
 					.then(responseAsJson => {
-						console.log(responseAsJson, "linea 32");
-						console.log("bbbbbbbbb");
-
 						getActions().setPlanets(responseAsJson);
 					})
 					.catch(error => {
@@ -40,22 +25,48 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			setPlanets: characters => {
-				console.log(characters, "linea 43");
-				let arr = [];
-				for (const key in characters) {
-					//console.log(key + ":" + characters[key], "en for in");
-					if (key === "results") arr = characters[key];
-				}
-				console.log(arr, "soy arr");
+				let arr = characters.results;
 
-				arr.map((character, index) => {
-					console.log(character[index], "ccccccc");
-					getStore().characters.push({
-						name: arr[index].name,
-						rotation_period: arr[index].rotation_period,
-						orbital_period: arr[index].orbital_period,
-						diameter: arr[index].diameter,
-						climate: arr[index].climate
+				arr.map((planet, index) => {
+					//console.log(character[index], "ccccccc");
+					getStore().planets.push({
+						name: planet.name,
+						rotation_period: planet.rotation_period,
+						orbital_period: planet.orbital_period,
+						diameter: planet.diameter,
+						climate: planet.climate
+					});
+				});
+			},
+			getPeoples: () => {
+				fetch("https://swapi.dev/api/people/", {
+					method: "GET"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error("I can't load characters");
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						getActions().setPeoples(responseAsJson);
+					})
+					.catch(error => {
+						//manejo de errores
+						console.log(error);
+					});
+			},
+			setPeoples: characters => {
+				let arr = characters.results;
+				//console.log(arr);
+				arr.map((people, index) => {
+					//console.log(character[index], "ccccccc");
+					getStore().peoples.push({
+						name: people.name,
+						height: people.height,
+						mass: people.mass,
+						birth_year: people.birth_year,
+						gender: people.gender
 					});
 				});
 			},

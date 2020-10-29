@@ -25,8 +25,9 @@ const injectContext = PassedComponent => {
 
 		useEffect(() => {
 			state.actions.getPlanets();
-			console.log(state.store.characters, "en context");
-			console.log(state.store.demo, "en context");
+			state.actions.getPeoples();
+			console.log(state.store.peoples, "en context");
+			console.log(state.store.planets, "en context");
 
 			//Aqui empezamos, haciendo el fetch
 			/**
