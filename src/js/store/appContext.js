@@ -24,7 +24,7 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
-			state.actions.getCharacters();
+			state.actions.getPlanets();
 			console.log(state.store.characters, "en context");
 			console.log(state.store.demo, "en context");
 

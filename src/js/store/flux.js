@@ -17,7 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters: []
 		},
 		actions: {
-			getCharacters: () => {
+			getPlanets: () => {
 				fetch("https://swapi.dev/api/planets/", {
 					method: "GET"
 				})
@@ -32,14 +32,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(responseAsJson, "linea 32");
 						console.log("bbbbbbbbb");
 
-						getActions().setCharacters(responseAsJson);
+						getActions().setPlanets(responseAsJson);
 					})
 					.catch(error => {
 						//manejo de errores
 						console.log(error);
 					});
 			},
-			setCharacters: characters => {
+			setPlanets: characters => {
 				console.log(characters, "linea 43");
 				let arr = [];
 				for (const key in characters) {
@@ -50,33 +50,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				arr.map((character, index) => {
 					console.log(character[index], "ccccccc");
-					getStore().characters.push(
-						arr[index].name
-						//n_planets: character[index]
-						//height: characters.height
-					);
+					getStore().characters.push({
+						name: arr[index].name,
+						rotation_period: arr[index].rotation_period,
+						orbital_period: arr[index].orbital_period,
+						diameter: arr[index].diameter,
+						climate: arr[index].climate
+					});
 				});
-				//getStore().characters.push(arr);
-
-				/* for (let index = 0; index < arr.length; index++) {
-					console.log(arr[index], "soy arr dentro de for");
-					store.characters.concat(arr[index]);
-				} */
-				/* getStore().arr.map((character, index) => {
-					console.log(character[index], "ccccccc");
-					setStore.characters.push({
-						n_planets: character[index]
-						//height: characters.height
-					});
-				}); */
-				/* getStore.characters.count.map((character, index) => {
-					console.log(character.count, "ccccccc");
-					store.characters.push({
-						n_planets: character.count
-						//height: characters.height
-					});
-				}); */
-				//let character = {};
 			},
 			//-----------------------Aqui se guardan funciones que las guarda en store---------------------
 			// Use getActions to call a function within a fuction
