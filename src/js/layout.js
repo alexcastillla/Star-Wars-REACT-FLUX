@@ -9,12 +9,14 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Cardtype } from "./component/card";
 
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
+	// const { store, actions } = useContext(Context);
 
 	return (
 		<div className="d-flex flex-column h-100">
@@ -24,6 +26,8 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<Home />
+							<Cardtype attribute1={store.peoples[0].name} attribute2="pepe" />
+							<Cardtype attribute1="soy" attribute2="juan" />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
