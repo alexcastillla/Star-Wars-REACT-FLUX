@@ -23,12 +23,12 @@ const injectContext = PassedComponent => {
 			})
 		);
 
+		const [equipo, setEquipo] = useState([]);
 		useEffect(() => {
 			state.actions.getPlanets();
 			state.actions.getPeoples();
-			console.log(state.store.peoples, "en context");
-			console.log(state.store.planets, "en context");
-
+			console.log(state.store.planets, "Im the planet list");
+			console.log(state.store.peoples, "Im the people list");
 			//Aqui empezamos, haciendo el fetch
 			/**
 			 * EDIT THIS!

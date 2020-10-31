@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -6,70 +8,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 			peoples: []
 		},
 		actions: {
-			getPlanets: () => {
-				fetch("https://swapi.dev/api/planets/", {
-					method: "GET"
-				})
-					.then(response => {
-						if (!response.ok) {
-							throw Error("I can't load characters");
-						}
-						return response.json();
-					})
-					.then(responseAsJson => {
-						getActions().setPlanets(responseAsJson);
-					})
-					.catch(error => {
-						//manejo de errores
-						console.log(error);
-					});
+			getPlanets: async () => {
+				const data = await fetch("https://swapi.dev/api/people/");
+				const user = await data.json();
+				for (const i in user.results) {
+					getStore().planets.push(user.results[i]);
+				}
 			},
-			setPlanets: characters => {
-				let arr = characters.results;
 
-				arr.map((planet, index) => {
-					//console.log(character[index], "ccccccc");
-					getStore().planets.push({
-						name: planet.name,
-						rotation_period: planet.rotation_period,
-						orbital_period: planet.orbital_period,
-						diameter: planet.diameter,
-						climate: planet.climate
-					});
-				});
+			getPeoples: async () => {
+				const data = await fetch("https://swapi.dev/api/planets/");
+				const user = await data.json();
+				for (const i in user.results) {
+					getStore().peoples.push(user.results[i]);
+				}
 			},
-			getPeoples: () => {
-				fetch("https://swapi.dev/api/people/", {
-					method: "GET"
-				})
-					.then(response => {
-						if (!response.ok) {
-							throw Error("I can't load characters");
-						}
-						return response.json();
-					})
-					.then(responseAsJson => {
-						getActions().setPeoples(responseAsJson);
-					})
-					.catch(error => {
-						//manejo de errores
-						console.log(error);
-					});
-			},
-			setPeoples: characters => {
-				let arr = characters.results;
-				//console.log(arr);
-				arr.map((people, index) => {
-					//console.log(character[index], "ccccccc");
-					getStore().peoples.push({
-						name: people.name,
-						height: people.height,
-						mass: people.mass,
-						birth_year: people.birth_year,
-						gender: people.gender
-					});
-				});
-			},
+
 			//-----------------------Aqui se guardan funciones que las guarda en store---------------------
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {

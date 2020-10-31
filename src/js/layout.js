@@ -26,7 +26,7 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<Home />
-							<Cardtype attribute1={store.peoples[0].name} attribute2="pepe" />
+							<Cardtype attribute1="" attribute2="pepe" />
 							<Cardtype attribute1="soy" attribute2="juan" />
 						</Route>
 						<Route exact path="/demo">
