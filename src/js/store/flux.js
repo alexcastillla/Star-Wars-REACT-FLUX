@@ -9,19 +9,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			getPlanets: async () => {
-				const data = await fetch("https://swapi.dev/api/people/");
+				const data = await fetch("https://swapi.dev/api/planets/");
 				const user = await data.json();
-				for (const i in user.results) {
-					getStore().planets.push(user.results[i]);
-				}
+				// for (const i in user.results) {
+				// 	getStore().planets.push(user.results[i]);
+				// }
+				setStore({ planets: user.results });
 			},
 
 			getPeoples: async () => {
-				const data = await fetch("https://swapi.dev/api/planets/");
+				const data = await fetch("https://swapi.dev/api/people/");
 				const user = await data.json();
-				for (const i in user.results) {
-					getStore().peoples.push(user.results[i]);
-				}
+				// for (const i in user.results) {
+				// 	getStore().peoples.push(user.results[i]);
+				// }
+				setStore({ peoples: user.results });
 			},
 
 			//-----------------------Aqui se guardan funciones que las guarda en store---------------------
