@@ -1,7 +1,7 @@
 import React from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
-import { Cardtype } from "../component/card";
+import { Cardpeoples } from "../component/cardpeoples";
 
 export const Home = () => (
 	<div className="m-4 p-2">
@@ -16,11 +16,12 @@ export const Home = () => (
 		</div> */}
 		<div>
 			<h1 className="text-danger">Characters</h1>
-			<Cardtype attribute1="Here" attribute2="Characters" />
+			<div>
+				<Cardpeoples />
+			</div>
 		</div>
 		<div className="mt-3">
 			<h1 className="text-danger">Planets</h1>
-			<Cardtype attribute1="Here" attribute2="Planets" />
 		</div>
 	</div>
 );
