@@ -42,7 +42,7 @@ export const Cardpeoples = () => {
 							<button type="button" className="btn btn-primary">
 								More Info
 							</button>
-							<button type="button" className="btn btn-secondary">
+							<button type="button" className="btn btn-success" onClick={() => actions.setFav(item.name)}>
 								❤
 							</button>
 						</div>

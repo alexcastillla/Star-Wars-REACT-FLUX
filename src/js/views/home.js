@@ -17,13 +17,13 @@ export const Home = () => (
 		</div> */}
 		<div>
 			<h1 className="text-danger">Characters</h1>
-			<div>
+			<div className="container-cards">
 				<Cardpeoples />
 			</div>
 		</div>
 		<div className="mt-3">
 			<h1 className="text-danger">Planets</h1>
-			<div>
+			<div className="container-cards">
 				<Cardplanets />
 			</div>
 		</div>

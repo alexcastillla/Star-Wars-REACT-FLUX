@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+	//const [drop, setDrop] = useState([]);
+
+	let deleteLine = index => {
+		const newTodos = [...store.fav];
+		newTodos.splice(index, 1);
+		store.fav = [...newTodos];
+	};
+	/* useEffect(
+		() => {
+			
+		},
+		[store.fav]
+	); */
+
 	return (
 		<nav className="navbar navbar-light bg-dark mb-3">
 			<Link to="/">
@@ -11,11 +29,18 @@ export const Navbar = () => {
 				/>
 			</Link>
 			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">
-						<i className="fab fa-galactic-republic" />
-					</button>
-				</Link>
+				<DropdownButton id="dropdown-basic-button" title={store.fav.length + " Favorites"}>
+					{store.fav.map((item, index) => {
+						return (
+							<Dropdown.Item key={index}>
+								{item}
+								<button className="remove" onClick={() => deleteLine(index)}>
+									✔
+								</button>
+							</Dropdown.Item>
+						);
+					})}
+				</DropdownButton>
 			</div>
 		</nav>
 	);
