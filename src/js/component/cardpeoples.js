@@ -38,6 +38,14 @@ export const Cardpeoples = () => {
 								</li>
 							</ul>
 						</div>
+						<div className="card-footer">
+							<button type="button" className="btn btn-primary">
+								More Info
+							</button>
+							<button type="button" className="btn btn-secondary">
+								❤
+							</button>
+						</div>
 					</div>
 				);
 			})}
