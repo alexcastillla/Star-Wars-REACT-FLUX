@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const Cardpeoples = () => {
 	const { store, actions } = useContext(Context);
@@ -39,9 +40,11 @@ export const Cardpeoples = () => {
 							</ul>
 						</div>
 						<div className="card-footer">
-							<button type="button" className="btn btn-primary">
-								More Info
-							</button>
+							<Link to={`/${item.name}`}>
+								<button type="button" className="btn btn-primary">
+									More Info
+								</button>
+							</Link>
 							<button type="button" className="btn btn-secondary">
 								❤
 							</button>
