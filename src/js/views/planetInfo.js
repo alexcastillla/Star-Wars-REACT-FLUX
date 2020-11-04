@@ -13,7 +13,7 @@ export const PlanetsInfo = props => {
 		let newPlanetArray = "";
 		for (let index = 0; index < store.planets.length; index++) {
 			if (store.planets[index].name == params.theid) {
-				newPeopleArray = store.planets[index];
+				newPlanetArray = store.planets[index];
 			}
 		}
 		return newPlanetArray;
@@ -23,19 +23,14 @@ export const PlanetsInfo = props => {
 	return (
 		<div className="container">
 			<ul className="list-group">
-				<img
-					className="card-image"
-					src="https://img.unocero.com/2020/01/nasa-descubre-planeta-tatooine.jpg"
-					alt="Star Wars"
-				/>
 				<span>
-					<h1>Name: {findPeopleFuction().name}</h1>
+					<h1>Name: {findPlanetFuction().name}</h1>
 				</span>
 				<span>
-					<h2>Gender: {findPeopleFuction().rotation}</h2>
+					<h2>Climate: {findPlanetFuction().climate}</h2>
 				</span>
 				<span>
-					<h3>Skin color: {findPeopleFuction().diameter}</h3>
+					<h3>Diameter: {findPlanetFuction().diameter}</h3>
 				</span>
 			</ul>
 			<Link to="/">

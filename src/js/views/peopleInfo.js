@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import "../../styles/demo.scss";
-// import { propTypes } from "react-bootstrap/esm/Image";
 
 export const PeopleInfo = props => {
 	const { store, actions } = useContext(Context);

@@ -38,7 +38,7 @@ export const Cardplanets = () => {
 							</ul>
 						</div>
 						<div className="card-footer">
-							<Link to={`/${item.name}`}>
+							<Link to={`planetInfo/${item.name}`}>
 								<button type="button" className="btn btn-primary">
 									More Info
 								</button>
