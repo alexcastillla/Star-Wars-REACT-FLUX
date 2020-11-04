@@ -11,18 +11,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getPlanets: async () => {
 				const data = await fetch("https://swapi.dev/api/planets/");
 				const user = await data.json();
-				// for (const i in user.results) {
-				// 	getStore().planets.push(user.results[i]);
-				// }
 				setStore({ planets: user.results });
 			},
 
 			getPeoples: async () => {
 				const data = await fetch("https://swapi.dev/api/people/");
 				const user = await data.json();
-				// for (const i in user.results) {
-				// 	getStore().peoples.push(user.results[i]);
-				// }
 				setStore({ peoples: user.results });
 			},
 
@@ -31,33 +25,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			loadSomeData: () => {
-				/* fetch("https://swapi.dev/api/planets/")
-					.then(response => {
-						if (response.ok) {
-							throw new Error("I can't load characters");
-						}
-						return response.json();
-					})
-					.then(responseAsJson => {
-						console.log(responseAsJson);
-
-						setStore(responseAsJson);
-					})
-					.catch(error => {
-						//manejo de errores
-						console.log(error);
-					}); */
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))  //Aqui metemos la API
-				*/
-			},
+			loadSomeData: () => {},
 			changeColor: (index, color) => {
-				//get the store
 				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
 				const demo = store.demo.map((elm, i) => {
 					if (i === index) elm.background = color;
 					return elm;

@@ -7,9 +7,7 @@ export const Cardpeoples = () => {
 
 	return (
 		<div className="card-columns">
-			{/* <p>Hola {store.peoples[0].gender}</p> */}
 			{store.peoples.map((item, index) => {
-				// console.log(item, "soy un item");
 				return (
 					<div className="card" key={index}>
 						<img

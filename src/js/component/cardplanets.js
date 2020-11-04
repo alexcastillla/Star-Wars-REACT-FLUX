@@ -1,18 +1,13 @@
 import React, { Component, useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const Cardplanets = () => {
 	const { store, actions } = useContext(Context);
 
-	// console.log(store.planets, "hola");
-	// let planetas = store.planets;
-	// console.log(planetas, "hola patata");
-
 	return (
 		<div className="card-columns">
-			{/* <p>Hola {store.peoples[0].gender}</p> */}
 			{store.planets.map((item, index) => {
-				// console.log(item, "soy un item");
 				return (
 					<div className="card" key={index}>
 						<img
@@ -43,9 +38,11 @@ export const Cardplanets = () => {
 							</ul>
 						</div>
 						<div className="card-footer">
-							<button type="button" className="btn btn-primary">
-								More Info
-							</button>
+							<Link to={`/${item.name}`}>
+								<button type="button" className="btn btn-primary">
+									More Info
+								</button>
+							</Link>
 							<button type="button" className="btn btn-secondary">
 								❤
 							</button>
