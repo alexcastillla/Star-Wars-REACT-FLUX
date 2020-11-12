@@ -21,21 +21,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getPeoples: async () => {
 				const data = await fetch("https://swapi.dev/api/people/");
 				const user = await data.json();
-				// for (const i in user.results) {
-				// 	getStore().peoples.push(user.results[i]);
-				// }
 				setStore({ peoples: user.results });
 			},
 
 			setFav: name => {
+				let exists = false;
 				const store = getStore();
-				setStore({ fav: [...getStore().fav, name] });
+				store.fav.map((item, index) => {
+					if (name == item) exists = true;
+				});
+				if (exists == false) setStore({ fav: [...getStore().fav, name] });
+			},
+
+			setFavDeleted: () => {
+				const store = getStore();
+				setStore({ fav: [...getStore().fav] });
 				//setStore({ name: name });
 				console.log(store.fav, "Im the fav list");
 			}
-
-			//-----------------------Aqui se guardan funciones que las guarda en store---------------------
-			// Use getActions to call a function within a fuction
 		}
 	};
 };

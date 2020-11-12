@@ -6,9 +6,7 @@ export const Cardpeoples = () => {
 
 	return (
 		<div className="card-columns">
-			{/* <p>Hola {store.peoples[0].gender}</p> */}
 			{store.peoples.map((item, index) => {
-				// console.log(item, "soy un item");
 				return (
 					<div className="card" key={index}>
 						<img
@@ -39,10 +37,10 @@ export const Cardpeoples = () => {
 							</ul>
 						</div>
 						<div className="card-footer">
-							<button type="button" className="btn btn-primary">
+							<button type="button" className="btn btn-dark">
 								More Info
 							</button>
-							<button type="button" className="btn btn-success" onClick={() => actions.setFav(item.name)}>
+							<button type="button" className="btn btn-primary" onClick={() => actions.setFav(item.name)}>
 								❤
 							</button>
 						</div>

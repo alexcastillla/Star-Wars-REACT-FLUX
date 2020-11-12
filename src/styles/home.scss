@@ -14,3 +14,7 @@ white-space: nowrap;
     width: auto;
     // height: fit-content;
 }
+.card-footer{
+    display: flex;
+    justify-content: space-between;
+}

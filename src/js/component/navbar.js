@@ -6,19 +6,13 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-	//const [drop, setDrop] = useState([]);
 
 	let deleteLine = index => {
 		const newTodos = [...store.fav];
 		newTodos.splice(index, 1);
 		store.fav = [...newTodos];
+		actions.setFavDeleted();
 	};
-	/* useEffect(
-		() => {
-			
-		},
-		[store.fav]
-	); */
 
 	return (
 		<nav className="navbar navbar-light bg-dark mb-3">
