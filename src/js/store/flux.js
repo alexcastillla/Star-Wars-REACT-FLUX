@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			//--------------------------------Aqui se guarda informacion
+			fav: [],
 			planets: [],
 			peoples: []
 		},
@@ -20,22 +21,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ peoples: user.results });
 			},
 
-			//-----------------------Aqui se guardan funciones que las guarda en store---------------------
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {},
-			changeColor: (index, color) => {
+			setFav: name => {
+				let exists = false;
 				const store = getStore();
-
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
+				store.fav.map((item, index) => {
+					if (name == item) exists = true;
 				});
+				if (exists == false) setStore({ fav: [...getStore().fav, name] });
+			},
 
-				//reset the global store
-				setStore({ demo: demo });
+			setFavDeleted: () => {
+				const store = getStore();
+				setStore({ fav: [...getStore().fav] });
+				//setStore({ name: name });
+				console.log(store.fav, "Im the fav list");
 			}
 		}
 	};

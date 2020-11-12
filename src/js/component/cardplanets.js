@@ -43,7 +43,7 @@ export const Cardplanets = () => {
 									More Info
 								</button>
 							</Link>
-							<button type="button" className="btn btn-secondary">
+							<button type="button" className="btn btn-primary" onClick={() => actions.setFav(item.name)}>
 								❤
 							</button>
 						</div>

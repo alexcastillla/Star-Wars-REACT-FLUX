@@ -1,7 +1,20 @@
 .content{
-    width: 18rem;
+    width: 15rem;
 }
+.container-cards{
+    overflow-y: hidden; 
+    overflow-x: auto;
+    width: auto;
+/* height: 5rem; */
+padding: 10px;
+white-space: nowrap;
+}
+
 .card-image{
-    width: 18rem;
+    width: auto;
     // height: fit-content;
+}
+.card-footer{
+    display: flex;
+    justify-content: space-between;
 }
