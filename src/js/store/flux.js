@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			//--------------------------------Aqui se guarda informacion
 			fav: [],
 			planets: [],
 			peoples: []
@@ -11,19 +10,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			getPlanets: async () => {
 				const data = await fetch("https://swapi.dev/api/planets/");
-				const planets = await data.json();
-				setStore({ planets: planets.results });
-				if (planets.next) {
-					getActions().getPlanets(planets.next.replace(":", "s:"));
+				const planets_response = await data.json();
+				setStore({ planets: planets_response.results });
+				if ((planets_response.next = !null)) {
+					getActions().getPlanets(planets_response.next.replace(":", "s:"));
 				}
 			},
 
 			getPeoples: async () => {
 				const data = await fetch("https://swapi.dev/api/people/");
-				const peoples = await data.json();
-				setStore({ peoples: peoples.results });
-				if (peoples.next) {
-					getActions().getPeoples(peoples.next.replace(":", "s:"));
+				const peoples_response = await data.json();
+				setStore({ peoples: peoples_response.results });
+				if ((peoples_response.next = !null)) {
+					getActions().getPeoples(peoples_response.next.replace(":", "s:"));
 				}
 			},
 
@@ -39,7 +38,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setFavDeleted: () => {
 				const store = getStore();
 				setStore({ fav: [...getStore().fav] });
-				//setStore({ name: name });
 				console.log(store.fav, "Im the fav list");
 			}
 		}
