@@ -12,7 +12,7 @@ export const Cardplanets = () => {
 					<div className="card" key={index}>
 						<img
 							className="card-image"
-							src="https://img.unocero.com/2020/01/nasa-descubre-planeta-tatooine.jpg"
+							src="https://www.conflictofjustice.com/wp-content/uploads/2019/02/header-earth-1038x400.jpg"
 							alt="Star Wars"
 						/>
 						<div className="card-body">

@@ -12,7 +12,7 @@ export const Cardpeoples = () => {
 					<div className="card" key={index}>
 						<img
 							className="card-image"
-							src="https://i.blogs.es/dafdab/jar_jar_binks/450_1000.jpg"
+							src="https://static2.lavozdigital.es/media/ocio/2017/12/14/v/tv-ja-jar-binks-star-wars-kJoB--1240x698@abc.jpg"
 							alt="Star Wars"
 						/>
 						<div className="card-body">
