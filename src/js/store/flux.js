@@ -12,9 +12,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getPlanets: async () => {
 				const data = await fetch("https://swapi.dev/api/planets/");
 				const user = await data.json();
-				// for (const i in user.results) {
-				// 	getStore().planets.push(user.results[i]);
-				// }
 				setStore({ planets: user.results });
 			},
 
